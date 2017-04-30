@@ -1,5 +1,0 @@
-project_site:
-    resource: "@ProjectSiteBundle/Resources/config/routing.yml"
-    prefix:   /
-
-

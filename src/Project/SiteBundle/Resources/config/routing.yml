@@ -1,1 +1,10 @@
-
+ProjectSiteBundle_homepage:
+    path:     /
+    defaults: { _controller: "ProjectSiteBundle:Page:index" }
+    requirements:
+         methods:  GET
+ProjectSiteBundle_add:
+    path:   /add
+    defaults: { _controller: "ProjectSiteBundle:Page:add" }
+    requirements:
+         methods:  GET

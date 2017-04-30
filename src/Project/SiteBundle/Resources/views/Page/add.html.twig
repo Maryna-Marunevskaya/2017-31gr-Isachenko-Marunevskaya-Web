@@ -1,0 +1,23 @@
+{% extends 'ProjectSiteBundle::layout.html.twig' %}
+
+{% block title %}Contact{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>Contact symblog</h1>
+    </header>
+
+    <p>Want to contact symblog?</p>
+
+  {{ form_start(form, { 'action': path('ProjectSiteBundle_add'), 'method': 'POST', 'attr': {'class': 'user'} }) }}
+{{ form_errors(form) }}
+
+{{ form_row(form.login) }}
+{{ form_row(form.password) }}
+{{ form_row(form.role) }}
+
+{{ form_rest(form) }}
+
+<input type="submit" value="Submit" />
+
+ {% endblock %}

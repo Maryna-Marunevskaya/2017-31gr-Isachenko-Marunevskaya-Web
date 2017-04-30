@@ -1,15 +1,18 @@
 <?php
-//src/Project/SiteBundle/Entity/Country.php
+//src/Project/SiteBundle/Entity/Place.php
 namespace Project\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
 * @ORM\Entity
-* @ORM\Table(name="country")
+* @ORM\Table(name="place")
 * @ORM\HasLifecycleCallbacks
+* @ORM\InheritanceType("SINGLE_TABLE")
+* @ORM\DiscriminatorColumn(name="discr", type="string")
+* @ORM\DiscriminatorMap({"place" = "Place", "city" = "City", "sight" = "Sight"})
 */
-class Country
+abstract class Place
 {
     /**
     * @ORM\Id
@@ -18,24 +21,14 @@ class Country
     **/
     protected $id;
     /**
-    * @ORM\Column(name="name",type="string", unique=true, nullable=false)
+    * @ORM\Column(name="name",type="string", nullable=false)
     **/
     protected $name;
-     /**
-    * @ORM\OneToMany(targetEntity="Place", mappedBy="country")
-    */
-    protected $cities;
+    
     /**
     * @ORM\Column(name="image",type="string", nullable=false)
     **/
     protected $image;
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->cities = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -52,7 +45,7 @@ class Country
      *
      * @param string $name
      *
-     * @return Country
+     * @return Place
      */
     public function setName($name)
     {
@@ -76,7 +69,7 @@ class Country
      *
      * @param string $image
      *
-     * @return Country
+     * @return Place
      */
     public function setImage($image)
     {
@@ -93,39 +86,5 @@ class Country
     public function getImage()
     {
         return $this->image;
-    }
-
-    /**
-     * Add city
-     *
-     * @param \Project\SiteBundle\Entity\Place $city
-     *
-     * @return Country
-     */
-    public function addCity(\Project\SiteBundle\Entity\Place $city)
-    {
-        $this->cities[] = $city;
-
-        return $this;
-    }
-
-    /**
-     * Remove city
-     *
-     * @param \Project\SiteBundle\Entity\Place $city
-     */
-    public function removeCity(\Project\SiteBundle\Entity\Place $city)
-    {
-        $this->cities->removeElement($city);
-    }
-
-    /**
-     * Get cities
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCities()
-    {
-        return $this->cities;
     }
 }

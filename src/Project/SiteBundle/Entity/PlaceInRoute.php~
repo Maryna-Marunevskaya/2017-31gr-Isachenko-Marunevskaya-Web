@@ -31,7 +31,7 @@ class PlaceInRoute
      * @ORM\JoinColumn(name="route_id", referencedColumnName="id", nullable=false)
      */
     protected $route;
-
+    
 
     /**
      * Get id
