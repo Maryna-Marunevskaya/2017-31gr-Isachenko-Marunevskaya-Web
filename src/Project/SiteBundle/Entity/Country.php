@@ -22,7 +22,7 @@ class Country
     **/
     protected $name;
      /**
-    * @ORM\OneToMany(targetEntity="Place", mappedBy="country")
+    * @ORM\OneToMany(targetEntity="City", mappedBy="country")
     */
     protected $cities;
     /**
@@ -98,11 +98,11 @@ class Country
     /**
      * Add city
      *
-     * @param \Project\SiteBundle\Entity\Place $city
+     * @param \Project\SiteBundle\Entity\City $city
      *
      * @return Country
      */
-    public function addCity(\Project\SiteBundle\Entity\Place $city)
+    public function addCity(\Project\SiteBundle\Entity\City $city)
     {
         $this->cities[] = $city;
 
@@ -112,9 +112,9 @@ class Country
     /**
      * Remove city
      *
-     * @param \Project\SiteBundle\Entity\Place $city
+     * @param \Project\SiteBundle\Entity\City $city
      */
-    public function removeCity(\Project\SiteBundle\Entity\Place $city)
+    public function removeCity(\Project\SiteBundle\Entity\City $city)
     {
         $this->cities->removeElement($city);
     }

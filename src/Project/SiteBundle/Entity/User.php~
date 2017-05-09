@@ -29,6 +29,11 @@ class User
     * @ORM\Column(name="role", type="string", nullable=false)
     **/
     protected $role;
+    
+    /**
+    * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+    */
+	protected $comments;
 
     /**
      * Get id

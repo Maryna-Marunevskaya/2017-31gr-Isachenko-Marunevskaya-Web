@@ -31,6 +31,11 @@ class User
     protected $role;
 
     /**
+    * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+    */
+	protected $comments;
+
+    /**
      * Get id
      *
      * @return integer
@@ -110,5 +115,46 @@ class User
     public function getRole()
     {
         return $this->role;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \Project\SiteBundle\Entity\Comment $comment
+     *
+     * @return User
+     */
+    public function addComment(\Project\SiteBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \Project\SiteBundle\Entity\Comment $comment
+     */
+    public function removeComment(\Project\SiteBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

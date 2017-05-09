@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
 * @ORM\Entity
+* @ORM\Table(name="city")
 **/
 class City extends Place
 {
@@ -15,7 +16,7 @@ class City extends Place
      */
     protected $country;
      /**
-    * @ORM\OneToMany(targetEntity="Place", mappedBy="city")
+    * @ORM\OneToMany(targetEntity="Sight", mappedBy="city")
     */
 	protected $sights;
     /**
@@ -140,39 +141,5 @@ class City extends Place
     public function getSights()
     {
         return $this->sights;
-    }
-
-    /**
-     * Add sigt
-     *
-     * @param \Project\SiteBundle\Entity\Place $sigt
-     *
-     * @return City
-     */
-    public function addSigt(\Project\SiteBundle\Entity\Place $sigt)
-    {
-        $this->sigts[] = $sigt;
-
-        return $this;
-    }
-
-    /**
-     * Remove sigt
-     *
-     * @param \Project\SiteBundle\Entity\Place $sigt
-     */
-    public function removeSigt(\Project\SiteBundle\Entity\Place $sigt)
-    {
-        $this->sigts->removeElement($sigt);
-    }
-
-    /**
-     * Get sigts
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSigts()
-    {
-        return $this->sigts;
     }
 }

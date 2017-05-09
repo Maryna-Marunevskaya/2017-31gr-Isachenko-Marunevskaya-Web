@@ -32,7 +32,6 @@ class PlaceInRoute
      */
     protected $route;
 
-
     /**
      * Get id
      *

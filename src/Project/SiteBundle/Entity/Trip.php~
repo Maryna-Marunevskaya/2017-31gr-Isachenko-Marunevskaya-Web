@@ -42,7 +42,6 @@ class Trip
     * @ORM\OneToMany(targetEntity="TouristInTrip", mappedBy="trip")
     */
     protected $touristsInTrip;
-
     /**
      * Constructor
      */

@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 * @ORM\Entity
 * @ORM\Table(name="place")
 * @ORM\HasLifecycleCallbacks
-* @ORM\InheritanceType("SINGLE_TABLE")
+* @ORM\InheritanceType("JOINED")
 * @ORM\DiscriminatorColumn(name="discr", type="string")
-* @ORM\DiscriminatorMap({"place" = "Place", "city" = "City", "sight" = "Sight"})
+* @ORM\DiscriminatorMap({"city" = "City", "sight" = "Sight"})
 */
 abstract class Place
 {
