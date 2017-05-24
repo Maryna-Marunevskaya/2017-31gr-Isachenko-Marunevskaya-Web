@@ -4,8 +4,11 @@ namespace Project\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 /**
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="Project\SiteBundle\Entity\Repository\PlaceRepository")
 * @ORM\Table(name="place")
 * @ORM\HasLifecycleCallbacks
 * @ORM\InheritanceType("JOINED")
@@ -24,67 +27,19 @@ abstract class Place
     * @ORM\Column(name="name",type="string", nullable=false)
     **/
     protected $name;
-
+    /**
+    * @ORM\Column(name="description", type="text", nullable=false)
+    **/
+    protected $description;
     /**
     * @ORM\Column(name="image",type="string", nullable=false)
     **/
     protected $image;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Place
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Place
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
+        $metadata->addPropertyConstraint('name', new NotBlank());
+        $metadata->addPropertyConstraint('description', new NotBlank());
+        $metadata->addPropertyConstraint('image', new NotBlank());
+     }
 }

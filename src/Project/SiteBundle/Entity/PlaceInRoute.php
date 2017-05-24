@@ -5,7 +5,7 @@ namespace Project\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="Project\SiteBundle\Entity\Repository\PlaceInRouteRepository")
 * @ORM\Table(name="placeinroute")
 * @ORM\HasLifecycleCallbacks
 */

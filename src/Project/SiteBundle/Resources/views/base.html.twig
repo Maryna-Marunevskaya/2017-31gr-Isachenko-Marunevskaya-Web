@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset=utf-8 " />
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon " href="{{ asset( 'favicon.ico') }} " />
+    </head>
+    <body>
+        {% block navigation %}
+            <nav>
+                <ul>
+                    <li><a href="# ">Home</a></li>
+                    <li><a href="# ">About</a></li>
+                    <li><a href="# ">Contact</a></li>
+                </ul>
+            </nav>
+        {% endblock %}
+
+        {% block body %}{% endblock %}
+
+        {% block footer %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

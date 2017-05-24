@@ -1,0 +1,10 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}{{sight.name}} - Moorooso{% endblock %}
+
+{% block body %}
+    {{sight.name}}
+    Страна - {{sight.city.country.name}} <a href="/moorooso/country/{{sight.city.country.id}}">Узнать больше</a>
+    Город - {{sight.city.name}} <a href="/moorooso/city/{{sight.city.id}}">Узнать больше</a>
+    {{sight.description}}
+    <img src="{{ asset(['images/sight/', sight.image]|join) }}" />
+{% endblock %}

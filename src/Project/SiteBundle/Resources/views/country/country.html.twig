@@ -1,0 +1,22 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Страны - Moorooso{% endblock%}
+
+
+{% block body %}
+    <table>
+        <thead>
+            <tr>
+                <th>Название страны</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for country in countries %}
+                <tr>
+                    <td>{{country.name}}</td>
+                    <td><a href="/moorooso/country/{{country.id}}">Узнать больше</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

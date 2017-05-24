@@ -5,7 +5,7 @@ namespace Project\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="Project\SiteBundle\Entity\Repository\TripRepository")
 * @ORM\Table(name="trip")
 * @ORM\HasLifecycleCallbacks
 */
@@ -34,6 +34,10 @@ class Trip
     * @ORM\Column(name="maxnumoftourists", type="integer", nullable=false)
     **/
     protected $maxNumOfTourists;
+    /**
+    * @ORM\Column(name="description", type="text", nullable=false)
+    **/
+    protected $description;
     /**
     * @ORM\Column(name="image", type="string", nullable=false)
     **/
@@ -212,5 +216,29 @@ class Trip
     public function getTouristsInTrip()
     {
         return $this->touristsInTrip;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Trip
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

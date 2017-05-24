@@ -1,0 +1,25 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}{{city.name}} - Moorooso{% endblock%}
+
+{% block body %}
+{{city.name}}
+Страна - {{city.country.name}} <a href="/moorooso/country/{{city.country.id}}">Узнать больше</a>
+{{city.description}}
+<img src="{{ asset(['images/city/', city.image]|join) }}" />
+    <table>
+        <thead>
+            <tr>
+                <th>Название достопримечательности</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sight in city.sights %}
+                <tr>
+                    <td>{{sight.name}}</td>
+                    <td><a href="/moorooso/sight/{{sight.id}}">Узнать больше</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock%}

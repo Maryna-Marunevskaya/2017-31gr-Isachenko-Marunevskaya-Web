@@ -4,8 +4,12 @@ namespace Project\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
+
 /**
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="Project\SiteBundle\Entity\Repository\LetterRepository")
 * @ORM\Table(name="letter")
 * @ORM\HasLifecycleCallbacks
 */
@@ -22,7 +26,7 @@ class Letter
     /**
     * @ORM\Column(name="fullname", type="string", nullable=false);
     **/
-    protected $fullName;
+    protected $fullname;
     /**
     * @ORM\Column(name="phone", type="string", nullable=false);
     **/
@@ -36,137 +40,20 @@ class Letter
     **/
     protected $theme;
     /**
-    * @ORM\Column(name="letter", type="string", nullable=false);
+    * @ORM\Column(name="content", type="text", nullable=false);
     **/
-    protected $letter;
+    protected $content;
+      /**
+    * @ORM\Column(name="created", type="datetime", nullable=false);
+    **/
+    protected $created;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+         public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        return $this->id;
-    }
-
-    /**
-     * Set fullName
-     *
-     * @param string $fullName
-     *
-     * @return Letter
-     */
-    public function setFullName($fullName)
-    {
-        $this->fullName = $fullName;
-
-        return $this;
-    }
-
-    /**
-     * Get fullName
-     *
-     * @return string
-     */
-    public function getFullName()
-    {
-        return $this->fullName;
-    }
-
-    /**
-     * Set phone
-     *
-     * @param string $phone
-     *
-     * @return Letter
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return string
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Letter
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set theme
-     *
-     * @param string $theme
-     *
-     * @return Letter
-     */
-    public function setTheme($theme)
-    {
-        $this->theme = $theme;
-
-        return $this;
-    }
-
-    /**
-     * Get theme
-     *
-     * @return string
-     */
-    public function getTheme()
-    {
-        return $this->theme;
-    }
-
-    /**
-     * Set letter
-     *
-     * @param string $letter
-     *
-     * @return Letter
-     */
-    public function setLetter($letter)
-    {
-        $this->letter = $letter;
-
-        return $this;
-    }
-
-    /**
-     * Get letter
-     *
-     * @return string
-     */
-    public function getLetter()
-    {
-        return $this->letter;
-    }
+        $metadata->addPropertyConstraint('fullname', new NotBlank());
+        $metadata->addPropertyConstraint('phone', new NotBlank());
+        $metadata->addPropertyConstraint('email', new Email());
+        $metadata->addPropertyConstraint('theme', new NotBlank());
+        $metadata->addPropertyConstraint('content', new NotBlank());
+     }
 }

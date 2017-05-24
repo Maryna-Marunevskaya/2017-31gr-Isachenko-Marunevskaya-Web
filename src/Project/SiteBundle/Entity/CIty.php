@@ -5,7 +5,7 @@ namespace Project\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="Project\SiteBundle\Entity\Repository\CityRepository")
 * @ORM\Table(name="city")
 **/
 class City extends Place
@@ -19,6 +19,7 @@ class City extends Place
     * @ORM\OneToMany(targetEntity="Sight", mappedBy="city")
     */
 	protected $sights;
+
     /**
      * Constructor
      */
@@ -141,5 +142,29 @@ class City extends Place
     public function getSights()
     {
         return $this->sights;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return City
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

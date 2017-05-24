@@ -1,0 +1,22 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Достопримечательности - Moorooso{% endblock%}
+
+
+{% block body %}
+    <table>
+        <thead>
+            <tr>
+                <th>Полное название достопримечательности</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sight in sights %}
+                <tr>
+                    <td>{{sight.city.country.name}}, {{sight.city.name}}, {{sight.name}}</td>
+                    <td><a href="/moorooso/sight/{{sight.id}}">Узнать больше</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

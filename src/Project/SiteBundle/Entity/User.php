@@ -3,11 +3,19 @@
 namespace Project\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="Project\SiteBundle\Entity\Repository\UserRepository")
 * @ORM\Table(name="user")
 * @ORM\HasLifecycleCallbacks
+* @UniqueEntity(
+*     fields={"login"},
+*     message="Логин должен быть уникальным."
+* )
 */
 class User
 {
@@ -29,132 +37,19 @@ class User
     * @ORM\Column(name="role", type="string", nullable=false)
     **/
     protected $role;
-
     /**
     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
     */
 	protected $comments;
-
     /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    * @ORM\OneToMany(targetEntity="TouristInTrip", mappedBy="tourist")
+    */
+    protected $trips;
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        return $this->id;
-    }
-
-    /**
-     * Set login
-     *
-     * @param string $login
-     *
-     * @return User
-     */
-    public function setLogin($login)
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
-    /**
-     * Get login
-     *
-     * @return string
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set role
-     *
-     * @param string $role
-     *
-     * @return User
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return string
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add comment
-     *
-     * @param \Project\SiteBundle\Entity\Comment $comment
-     *
-     * @return User
-     */
-    public function addComment(\Project\SiteBundle\Entity\Comment $comment)
-    {
-        $this->comments[] = $comment;
-
-        return $this;
-    }
-
-    /**
-     * Remove comment
-     *
-     * @param \Project\SiteBundle\Entity\Comment $comment
-     */
-    public function removeComment(\Project\SiteBundle\Entity\Comment $comment)
-    {
-        $this->comments->removeElement($comment);
-    }
-
-    /**
-     * Get comments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
+        $metadata->addPropertyConstraint('login', new NotBlank());
+        $metadata->addPropertyConstraint('password', new NotBlank());
+        $metadata->addPropertyConstraint('role', new NotBlank());
+     }
 }

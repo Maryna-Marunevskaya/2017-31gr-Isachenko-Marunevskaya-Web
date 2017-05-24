@@ -5,7 +5,7 @@ namespace Project\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="Project\SiteBundle\Entity\Repository\TouristInTripRepository")
 * @ORM\Table(name="touristintrip")
 * @ORM\HasLifecycleCallbacks
 */
@@ -17,8 +17,8 @@ class TouristInTrip
     * @ORM\GeneratedValue(strategy="AUTO")
     **/
     protected $id;
-    /**
-     * @ORM\OneToOne(targetEntity="User")
+     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="trips")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     protected $tourist;
