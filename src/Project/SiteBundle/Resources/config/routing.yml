@@ -27,26 +27,6 @@ ProjectSiteBundle_one_country:
          methods:  GET
          id: \d+
 
-#ProjectSiteBundle_country_create:
-#    path:     /administrator/country/create
-#    defaults: { _controller: "ProjectSiteBundle:Country:create" }
-#    requirements:
-#         methods:  GET|POST
-#
-#ProjectSiteBundle_country_edit:
-#    path:     /administrator/country/edit/{id}
-#    defaults: { _controller: "ProjectSiteBundle:Country:edit" }
-#    requirements:
-#         methods:  GET|POST
-#         id: \d+
-#
-#ProjectSiteBundle_country_delete:
-#    path:     /administrator/country/delete/{id}
-#    defaults: { _controller: "ProjectSiteBundle:Country:delete" }
-#    requirements:
-#         methods:  GET
-#         id: \d+
-
 #CityController
 
 ProjectSiteBundle_all_cities:
@@ -76,3 +56,46 @@ ProjectSiteBundle_one_sight:
     requirements:
          methods:  GET
          id: \d+
+
+#LetterController
+
+ProjectSiteBundle_all_letters:
+    path:     /administrator/letter
+    defaults: { _controller: "ProjectSiteBundle:Letter:showAll" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_one_letter:
+    path:     /administrator/letter/{id}
+    defaults: { _controller: "ProjectSiteBundle:Letter:showOne" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_delete_letter:
+    path:     /administrator/letter/delete/{id}
+    defaults: { _controller: "ProjectSiteBundle:Letter:delete" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+
+#ProjectSiteBundle_country_create:
+#    path:     /administrator/country/create
+#    defaults: { _controller: "ProjectSiteBundle:Country:create" }
+#    requirements:
+#         methods:  GET|POST
+#
+#ProjectSiteBundle_country_edit:
+#    path:     /administrator/country/edit/{id}
+#    defaults: { _controller: "ProjectSiteBundle:Country:edit" }
+#    requirements:
+#         methods:  GET|POST
+#         id: \d+
+#
+#ProjectSiteBundle_country_delete:
+#    path:     /administrator/country/delete/{id}
+#    defaults: { _controller: "ProjectSiteBundle:Country:delete" }
+#    requirements:
+#         methods:  GET
+#         id: \d+
