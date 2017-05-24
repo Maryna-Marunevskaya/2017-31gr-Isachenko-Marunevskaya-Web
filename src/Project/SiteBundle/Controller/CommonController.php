@@ -30,6 +30,7 @@ class CommonController extends Controller
                 $theme=$form['theme']->getData();
                 $content=$form['content']->getData();
 
+                $letter->setCreated(new \DateTime());
                 $letter->setFullName($fullname);
                 $letter->setPhone($phone);
                 $letter->setEmail($email);
