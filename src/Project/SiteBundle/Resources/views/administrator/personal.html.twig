@@ -1,0 +1,7 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %} {% block title %}Личный кабинет - Moorooso{% endblock%}
+
+{% block body %}
+<h2>Добро пожаловать в личный кабинет, {{app.user.username}}.</h2>
+<a href="{{ path('ProjectSiteBundle_administrator_personal_account') }}" class="button">Аккаунт</a>
+<a href="{{ path('ProjectSiteBundle_administrator_personal_panel') }}" class="button">Панель администратора</a>
+{% endblock %}

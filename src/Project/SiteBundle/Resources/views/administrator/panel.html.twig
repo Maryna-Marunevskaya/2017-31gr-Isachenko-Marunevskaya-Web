@@ -1,0 +1,10 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %} {% block title %}Панель администратора - Moorooso{% endblock%}
+
+{% block body %}
+<a href="{{ path('ProjectSiteBundle_all_countries') }}" class="button">Страны</a>
+<a href="{{ path('ProjectSiteBundle_all_cities') }}" class="button">Города</a>
+<a href="{{ path('ProjectSiteBundle_all_sights') }}" class="button">Достопримечательности</a>
+<a href="{{ path('ProjectSiteBundle_all_letters') }}" class="button">Письма</a>
+<a href="{{ path('ProjectSiteBundle_all_users') }}" class="button">Пользователи</a>
+<a href="{{ path('ProjectSiteBundle_comments') }}" class="button">Отзывы</a>
+{% endblock %}

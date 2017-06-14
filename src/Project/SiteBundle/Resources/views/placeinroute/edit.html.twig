@@ -1,0 +1,11 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Редактирование пункта маршрута - Moorooso{% endblock %}
+
+{% block body %}
+    {{ form_start(form, { 'action': path('ProjectSiteBundle_placeinroute_edit', { 'id' : placeInRoute.id }), 'method': 'POST'}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.place) }}
+    {{ form_row(form.route) }}
+    {{ form_rest(form) }}
+    <input type="submit" value="Сохранить" class="button"/>
+{% endblock %}

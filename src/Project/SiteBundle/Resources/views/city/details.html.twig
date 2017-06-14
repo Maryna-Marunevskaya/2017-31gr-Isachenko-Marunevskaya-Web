@@ -1,0 +1,41 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}{{city.fullname}} - Moorooso{% endblock%}
+
+{% block body %}
+<div class="table_country">
+<div class="image" align= "center">
+    <h2>{{city.name}}</h2>
+    {% if is_granted('ROLE_ADMINISTRATOR') %}
+    <p><a href="/moorooso/administrator/city/edit/{{city.id}}" class="button">Изменить</a><a href="/moorooso/administrator/city/delete/{{city.id}}" class="button">Удалить</a> </p>
+    {% endif %}
+<p>Страна - {{city.country.name}} <a href="/moorooso/country/{{city.country.id}}" class="button">Узнать больше</a></p>
+<img src="{{ asset(['images/city/', city.image]|join) }}" height="100"/>
+<p>{{city.shortdescription}}</p>
+<p>{{city.description}}</p>
+</div>
+
+{% if not city.sights is empty %}
+<h2>Достопримечательности</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Название достопримечательности</th>
+            <th>Краткое описание достопримечательности</th>
+            <th>Изображение достопримечательности</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sight in city.sights %}
+        <tr>
+            <td>{{sight.name}}</td>
+            <td>{{sight.shortdescription}}</td>
+            <td><img src="{{ asset(['images/sight/', sight.image]|join) }}" /></td>
+            <td><a href="/moorooso/sight/{{sight.id}}" class="button">Узнать больше</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+</div>
+{% endblock%}

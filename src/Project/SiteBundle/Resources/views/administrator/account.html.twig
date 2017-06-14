@@ -1,0 +1,7 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %} {% block title %}Аккаунт - Moorooso{% endblock%}
+
+{% block body %}
+<p>Логин: {{app.user.username}}</p>
+<p>Пароль: {{app.user.originalPassword}}</p>
+<a href="{{path('ProjectSiteBundle_administrator_personal_account_edit')}}" class="button">Изменить</a>
+{% endblock %}

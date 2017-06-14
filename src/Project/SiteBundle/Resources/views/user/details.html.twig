@@ -1,0 +1,26 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}{{user.username}} - Moorooso{% endblock %}
+
+{% block body %}
+{% if app.user.username!=user.username %}
+<p><a href="/moorooso/administrator/user/edit/{{user.id}}" class="button">Изменить</a><a href="/moorooso/administrator/user/delete/{{user.id}}" class="button">Удалить</a></p>
+{% endif %}
+{{user.username}}
+{{user.originalPassword}}
+{{user.role.display}}
+{% if not user.trips is empty %}
+<h2>Поездки</h2>
+{% for trip in user.trips %}
+<p>{{trip.trip.route.name}}, {{trip.trip.startDate|date("H:i d-m-y")}}-{{trip.trip.finishDate|date("H:i d-m-y")}}
+<a href="/moorooso/trip/{{trip.trip.id}}" class="button">Узнать больше</a></p>
+{% endfor %}
+{% endif %}
+{% if not user.comments is empty %}
+<h2>Комментарии</h2>
+{% for comment in user.comments %}
+<p>{{comment.created|date("H:i d-m-y")}}:</p>
+        <p>{{comment.comment}}</p>
+        <a href="/moorooso/administrator/comment/delete/{{comment.id}}" class="button">Удалить</a>
+{% endfor %}
+{% endif %}
+{% endblock %}

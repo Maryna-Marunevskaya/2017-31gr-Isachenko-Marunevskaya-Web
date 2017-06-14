@@ -1,0 +1,28 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Туристы в поездках - Moorooso{% endblock%}
+
+{% block body %}
+ <div class="table_country">
+   {% if not touristsInTrip is empty %}
+       <table>
+           <thead>
+               <tr>
+                   <th>Турист</th>
+				   <th>Поездка</th>
+                   <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for touristInTrip in touristsInTrip %}
+                <tr>
+                    <td>{{touristInTrip.tourist.username}}</td>
+                    <td>{{touristInTrip.trip.route.name}}, {{touristInTrip.trip.startDate|date("H:i d-m-y")}}-{{touristInTrip.trip.finishDate|date("H:i d-m-y")}}
+<a href="/moorooso/trip/{{touristInTrip.trip.id}}" class="button">Узнать больше</a></td>
+                    <td>{% if touristInTrip.trip.isCanLeave %}<a href="/moorooso/travelagent/touristintrip/delete/{{touristInTrip.id}}" class="button">Исключить из поездки</a>{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

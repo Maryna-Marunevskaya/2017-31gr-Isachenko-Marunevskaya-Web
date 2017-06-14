@@ -1,0 +1,28 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Письма - Moorooso{% endblock%}
+
+
+{% block body %}
+   {% if not letters is empty %}
+       <table>
+           <thead>
+               <tr>
+                   <th>Отправитель</th>
+                   <th>Тема</th>
+                   <th>Дата отправления</th>
+                   <th></th>
+                </tr>
+            </thead>
+            <tbody>
+               {% for letter in letters %}
+                  <tr>
+                    <td>{{letter.fullname}}</td>
+                    <td>{{letter.theme}}</td>
+                    <td>{{letter.created|date("H:i d-m-y")}}</td>
+                    <td><a href="/moorooso/administrator/letter/{{letter.id}}">Прочитать</a><a href="/moorooso/administrator/letter/delete/{{letter.id}}">Удалить</a></td>
+                   </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

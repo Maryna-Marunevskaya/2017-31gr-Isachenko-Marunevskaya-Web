@@ -1,0 +1,11 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Регистрация - Moorooso{% endblock %}
+
+{% block body %}
+    {{ form_start(form, { 'action': path('_security_signup'), 'method': 'POST'}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.password) }}
+    {{ form_rest(form) }}
+    <input type="submit" value="Зарегистрироваться" class="button"/>
+{% endblock %}

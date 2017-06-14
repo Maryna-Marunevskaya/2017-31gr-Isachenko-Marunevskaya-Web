@@ -1,0 +1,25 @@
+security:
+    encoders:
+        Project\SiteBundle\Entity\User:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
+
+    providers:
+        main:
+            entity: { class: ProjectSiteBundle:User, property: username }
+    firewalls:
+        main:
+            pattern: /.*
+            form_login:
+                check_path: /login_check
+                login_path: /login
+            logout: true
+            security: true
+            anonymous: true
+
+    access_control:
+        - { path: /moorooso/administrator/.*, role: ROLE_ADMINISTRATOR }
+        - { path: /moorooso/travelagent/.*, role: ROLE_TRAVELAGENT }
+        - { path: /moorooso/tourist/.*, role: ROLE_TOURIST}
+        - { path: /.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

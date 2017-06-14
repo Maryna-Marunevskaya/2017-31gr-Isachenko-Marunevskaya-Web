@@ -1,0 +1,29 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %} {% block title %}Достопримечательности - Moorooso{% endblock%}
+
+{% block body %}
+<div class="table_country">
+{% if is_granted('ROLE_ADMINISTRATOR') %}
+<a href="/moorooso/administrator/sight/create" class="button">Добавить достопримечательность</a>{% endif %} {% if not sights is empty %}
+   <table>
+    <thead>
+        <tr>
+            <th>Название достопримечательности</th>
+            <th>Краткое описание достопримечательности</th>
+            <th>Изображение достопримечательности</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sight in sights %}
+        <tr>
+            <td>{{sight.fullname}}</td>
+            <td>{{sight.shortdescription}}</td>
+            <td><img src="{{ asset(['images/sight/', sight.image]|join) }}" /></td>
+            <td><a href="/moorooso/sight/{{sight.id}}" class="button">Узнать больше</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+</div>
+{% endblock %}

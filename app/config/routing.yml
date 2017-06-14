@@ -1,0 +1,23 @@
+_security_signup:
+    path: /signup
+    defaults: { _controller: "ProjectSiteBundle:User:signup" }
+    requirements:
+         methods:  GET|POST
+
+_security_login:
+    path:  /login
+    defaults: { _controller: ProjectSiteBundle:Security:login }
+_security_check:
+    path:  /login_check
+_security_logout:
+    path:  /logout
+
+ProjectSiteBundle_indexpage:
+    path:     /
+    defaults: { _controller: "ProjectSiteBundle:Common:main" }
+    requirements:
+         methods:  GET
+
+project_site:
+    resource: "@ProjectSiteBundle/Resources/config/routing.yml"
+    prefix:   /moorooso

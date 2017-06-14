@@ -1,0 +1,8 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %} {% block title %}Панель турагента - Moorooso{% endblock%}
+
+{% block body %}
+<a href="{{ path('ProjectSiteBundle_all_routes') }}" class="button">Маршруты</a>
+<a href="{{ path('ProjectSiteBundle_all_placesinroute') }}" class="button">Пункты маршрутов</a>
+<a href="{{ path('ProjectSiteBundle_all_trips') }}" class="button">Поездки</a>
+<a href="{{ path('ProjectSiteBundle_all_touristsintrip') }}" class="button">Туристы в поездках</a>
+{% endblock %}

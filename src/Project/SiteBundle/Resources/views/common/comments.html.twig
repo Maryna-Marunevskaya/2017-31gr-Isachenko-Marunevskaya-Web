@@ -1,0 +1,23 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Отзывы - Moorooso{% endblock %}
+
+{% block body %}
+   {% if is_granted('ROLE_TOURIST') %}
+    {{ form_start(form, { 'action': path('ProjectSiteBundle_comments'), 'method': 'POST'}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.comment) }}
+    {{ form_rest(form) }}
+    <input type="submit" value="Отправить" class="button"/>
+    {% endif %}
+
+    {% if not comments is empty %}
+       <h2>Отзывы</h2>
+        {% for comment in comments %}
+        <p>{{comment.user.username}}, {{comment.created|date("H:i d-m-y")}}:</p>
+        <p>{{comment.comment}}</p>
+        {% if is_granted('ROLE_ADMINISTRATOR') %}
+        <a href="/moorooso/administrator/comment/delete/{{comment.id}}" class="button">Удалить</a>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

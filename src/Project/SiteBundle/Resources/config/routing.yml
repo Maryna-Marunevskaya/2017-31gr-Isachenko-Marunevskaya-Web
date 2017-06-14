@@ -1,0 +1,401 @@
+#AdministratorController 4 из 4
+ProjectSiteBundle_administrator_personal:
+    path:   /administrator/personal
+    defaults: { _controller: "ProjectSiteBundle:Administrator:personal" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_administrator_personal_account:
+    path:   /administrator/personal/account
+    defaults: { _controller: "ProjectSiteBundle:Administrator:account" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_administrator_personal_account_edit:
+    path:   /administrator/personal/account/edit
+    defaults: { _controller: "ProjectSiteBundle:Administrator:edit" }
+    requirements:
+         methods:  GET|POST
+
+ProjectSiteBundle_administrator_personal_panel:
+    path:   /administrator/personal/panel
+    defaults: { _controller: "ProjectSiteBundle:Administrator:panel" }
+    requirements:
+         methods:  GET
+
+#UserController 5 из 5
+ProjectSiteBundle_all_users:
+    path:     /administrator/user
+    defaults: { _controller: "ProjectSiteBundle:User:showAll" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_one_user:
+    path:     /administrator/user/{id}
+    defaults: { _controller: "ProjectSiteBundle:User:showOne" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_user_create:
+    path:     /administrator/user/create
+    defaults: { _controller: "ProjectSiteBundle:User:create" }
+    requirements:
+         methods:  GET|POST
+
+ProjectSiteBundle_user_edit:
+    path:     /administrator/user/edit/{id}
+    defaults: { _controller: "ProjectSiteBundle:User:edit" }
+    requirements:
+         methods:  GET|POST
+         id: \d+
+
+ProjectSiteBundle_user_delete:
+    path:     /administrator/user/delete/{id}
+    defaults: { _controller: "ProjectSiteBundle:User:delete" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+#TravelAgentController
+ProjectSiteBundle_travelagent_personal:
+    path:   /travelagent/personal
+    defaults: { _controller: "ProjectSiteBundle:TravelAgent:personal" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_travelagent_personal_account:
+    path:   /travelagent/personal/account
+    defaults: { _controller: "ProjectSiteBundle:TravelAgent:account" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_travelagent_personal_account_edit:
+    path:   /travelagent/personal/account/edit
+    defaults: { _controller: "ProjectSiteBundle:TravelAgent:edit" }
+    requirements:
+         methods:  GET|POST
+
+ProjectSiteBundle_travelagent_personal_panel:
+    path:   /travelagent/personal/panel
+    defaults: { _controller: "ProjectSiteBundle:TravelAgent:panel" }
+    requirements:
+         methods:  GET
+
+#TouristController
+ProjectSiteBundle_tourist_personal:
+    path:   /tourist/personal
+    defaults: { _controller: "ProjectSiteBundle:Tourist:personal" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_tourist_personal_account:
+    path:   /tourist/personal/account
+    defaults: { _controller: "ProjectSiteBundle:Tourist:account" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_tourist_personal_account_edit:
+    path:   /tourist/personal/account/edit
+    defaults: { _controller: "ProjectSiteBundle:Tourist:edit" }
+    requirements:
+         methods:  GET|POST
+
+ProjectSiteBundle_tourist_personal_panel:
+    path:   /tourist/personal/panel
+    defaults: { _controller: "ProjectSiteBundle:Tourist:panel" }
+    requirements:
+         methods:  GET
+
+#CommonController
+
+ProjectSiteBundle_homepage:
+    path:     /
+    defaults: { _controller: "ProjectSiteBundle:Common:main" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_comments:
+    path:     /comments
+    defaults: { _controller: "ProjectSiteBundle:Common:comments" }
+    requirements:
+         methods:  GET|POST
+
+ProjectSiteBundle_contacts:
+    path:     /contacts
+    defaults: { _controller: "ProjectSiteBundle:Common:contacts" }
+    requirements:
+         methods:  GET|POST
+
+#CommentController
+ProjectSiteBundle_comment_delete:
+    path:     /administrator/comment/delete/{id}
+    defaults: { _controller: "ProjectSiteBundle:Comment:delete" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+#LetterController 3 из 3
+
+ProjectSiteBundle_all_letters:
+    path:     /administrator/letter
+    defaults: { _controller: "ProjectSiteBundle:Letter:showAll" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_one_letter:
+    path:     /administrator/letter/{id}
+    defaults: { _controller: "ProjectSiteBundle:Letter:showOne" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_letter_delete:
+    path:     /administrator/letter/delete/{id}
+    defaults: { _controller: "ProjectSiteBundle:Letter:delete" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+#CountryController 5 из 5
+
+ProjectSiteBundle_all_countries:
+    path:     /country
+    defaults: { _controller: "ProjectSiteBundle:Country:showAll" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_one_country:
+    path:     /country/{id}
+    defaults: { _controller: "ProjectSiteBundle:Country:showOne" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_country_create:
+    path:     /administrator/country/create
+    defaults: { _controller: "ProjectSiteBundle:Country:create" }
+    requirements:
+         methods:  GET|POST
+
+ProjectSiteBundle_country_edit:
+    path:     /administrator/country/edit/{id}
+    defaults: { _controller: "ProjectSiteBundle:Country:edit" }
+    requirements:
+         methods:  GET|POST
+         id: \d+
+
+ProjectSiteBundle_country_delete:
+    path:     /administrator/country/delete/{id}
+    defaults: { _controller: "ProjectSiteBundle:Country:delete" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+#CityController 5 из 5
+
+ProjectSiteBundle_all_cities:
+    path:     /city
+    defaults: { _controller: "ProjectSiteBundle:City:showAll" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_one_city:
+    path:     /city/{id}
+    defaults: { _controller: "ProjectSiteBundle:City:showOne" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_city_create:
+    path:     /administrator/city/create
+    defaults: { _controller: "ProjectSiteBundle:City:create" }
+    requirements:
+         methods:  GET|POST
+
+ProjectSiteBundle_city_edit:
+    path:     /administrator/city/edit/{id}
+    defaults: { _controller: "ProjectSiteBundle:City:edit" }
+    requirements:
+         methods:  GET|POST
+         id: \d+
+
+ProjectSiteBundle_city_delete:
+    path:     /administrator/city/delete/{id}
+    defaults: { _controller: "ProjectSiteBundle:City:delete" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+#SightController 5 из 5
+
+ProjectSiteBundle_all_sights:
+    path:     /sight
+    defaults: { _controller: "ProjectSiteBundle:Sight:showAll" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_one_sight:
+    path:     /sight/{id}
+    defaults: { _controller: "ProjectSiteBundle:Sight:showOne" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_sight_create:
+    path:     /administrator/sight/create
+    defaults: { _controller: "ProjectSiteBundle:Sight:create" }
+    requirements:
+         methods:  GET|POST
+
+ProjectSiteBundle_sight_edit:
+    path:     /administrator/sight/edit/{id}
+    defaults: { _controller: "ProjectSiteBundle:Sight:edit" }
+    requirements:
+         methods:  GET|POST
+         id: \d+
+
+ProjectSiteBundle_sight_delete:
+    path:     /administrator/sight/delete/{id}
+    defaults: { _controller: "ProjectSiteBundle:Sight:delete" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+#RouteController 5 из 5
+
+ProjectSiteBundle_all_routes:
+    path:     /route
+    defaults: { _controller: "ProjectSiteBundle:Route:showAll" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_one_route:
+    path:     /route/{id}
+    defaults: { _controller: "ProjectSiteBundle:Route:showOne" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_route_create:
+    path:     /travelagent/route/create
+    defaults: { _controller: "ProjectSiteBundle:Route:create" }
+    requirements:
+         methods:  GET|POST
+
+ProjectSiteBundle_route_edit:
+    path:     /travelagent/route/edit/{id}
+    defaults: { _controller: "ProjectSiteBundle:Route:edit" }
+    requirements:
+         methods:  GET|POST
+         id: \d+
+
+ProjectSiteBundle_route_delete:
+    path:     /travelagent/route/delete/{id}
+    defaults: { _controller: "ProjectSiteBundle:Route:delete" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+#PlaceInRouteController 5 из 5
+
+ProjectSiteBundle_all_placesinroute:
+    path:     /placeinroute
+    defaults: { _controller: "ProjectSiteBundle:PlaceInRoute:showAll" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_one_placeinroute:
+    path:     /placeinroute/{id}
+    defaults: { _controller: "ProjectSiteBundle:PlaceInRoute:showOne" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_placeinroute_create:
+    path:     /travelagent/placeinroute/create
+    defaults: { _controller: "ProjectSiteBundle:PlaceInRoute:create" }
+    requirements:
+         methods:  GET|POST
+
+ProjectSiteBundle_placeinroute_edit:
+    path:     /travelagent/placeinroute/edit/{id}
+    defaults: { _controller: "ProjectSiteBundle:PlaceInRoute:edit" }
+    requirements:
+         methods:  GET|POST
+         id: \d+
+
+ProjectSiteBundle_placeinroute_delete:
+    path:     /travelagent/placeinroute/delete/{id}
+    defaults: { _controller: "ProjectSiteBundle:PlaceInRoute:delete" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+#TripController 6 из 6
+ProjectSiteBundle_all_trips:
+    path:     /trip
+    defaults: { _controller: "ProjectSiteBundle:Trip:showAll" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_one_trip:
+    path:     /trip/{id}
+    defaults: { _controller: "ProjectSiteBundle:Trip:showOne" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_trip_create:
+    path:     /travelagent/trip/create
+    defaults: { _controller: "ProjectSiteBundle:Trip:create" }
+    requirements:
+         methods:  GET|POST
+
+ProjectSiteBundle_trip_edit:
+    path:     /travelagent/trip/edit/{id}
+    defaults: { _controller: "ProjectSiteBundle:Trip:edit" }
+    requirements:
+         methods:  GET|POST
+         id: \d+
+
+ProjectSiteBundle_trip_delete:
+    path:     /travelagent/trip/delete/{id}
+    defaults: { _controller: "ProjectSiteBundle:Trip:delete" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_trip_delete_all_finished:
+    path:     /travelagent/trip/delete
+    defaults: { _controller: "ProjectSiteBundle:Trip:deleteAllFinished" }
+    requirements:
+         methods:  GET
+
+#TouristInTripController
+ProjectSiteBundle_all_touristsintrip:
+    path:     /travelagent/touristintrip
+    defaults: { _controller: "ProjectSiteBundle:TouristInTrip:showAll" }
+    requirements:
+         methods:  GET
+
+ProjectSiteBundle_touristintrip_delete:
+    path:     /travelagent/touristintrip/delete/{id}
+    defaults: { _controller: "ProjectSiteBundle:TouristInTrip:delete" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_join_trip:
+    path:     /tourist/trip/join/{id}
+    defaults: { _controller: "ProjectSiteBundle:TouristInTrip:join" }
+    requirements:
+         methods:  GET
+         id: \d+
+
+ProjectSiteBundle_leave_trip:
+    path:     /tourist/trip/leave/{id}
+    defaults: { _controller: "ProjectSiteBundle:TouristInTrip:leave" }
+    requirements:
+         methods:  GET
+         id: \d+

@@ -1,0 +1,14 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Авторизация - Moorooso{% endblock %}
+
+{% block body %}
+
+<form action="{{ path('_security_check') }}" method="POST">
+    <label for="username">Логин:</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}">
+    <label for="password">Пароль:</label>
+    <input type="password" class="form-control" id="password" name="_password">
+    <input type="submit" name="login" value="Войти" />
+</form>
+<a href="{{ path('_security_signup') }}" class="button">Зарегистрироваться</a>
+{% endblock %}

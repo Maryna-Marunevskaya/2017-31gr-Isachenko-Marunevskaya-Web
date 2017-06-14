@@ -1,0 +1,11 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Редактирование аккаунта - Moorooso{% endblock %}
+
+{% block body %}
+    {{ form_start(form, { 'action': path('ProjectSiteBundle_travelagent_personal_account_edit'), 'method': 'POST'}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.originalPassword) }}
+    {{ form_rest(form) }}
+    <input type="submit" value="Сохранить" class="button" />
+{% endblock %}

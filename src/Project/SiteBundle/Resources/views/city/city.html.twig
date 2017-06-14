@@ -1,0 +1,32 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Города - Moorooso{% endblock%}
+
+{% block body %}
+   <div class="table_country">
+   {% if is_granted('ROLE_ADMINISTRATOR') %}
+   <a href="/moorooso/administrator/city/create" class="button">Добавить город</a>
+   {% endif %}
+   {% if not cities is empty %}
+       <table>
+           <thead>
+               <tr>
+                   <th>Название города</th>
+                   <th>Краткое описание города</th>
+                   <th>Изображение города</th>
+                   <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for city in cities %}
+                    <tr>
+                        <td>{{city.fullname}}</td>
+                        <td>{{city.shortdescription}}</td>
+                        <td><img src="{{ asset(['images/city/', city.image]|join) }}"/></td>
+                        <td><a href="/moorooso/city/{{city.id}}" class="button">Узнать больше</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

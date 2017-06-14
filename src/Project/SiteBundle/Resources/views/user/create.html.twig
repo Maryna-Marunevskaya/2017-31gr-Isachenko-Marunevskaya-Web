@@ -1,0 +1,11 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Создание пользователя - Moorooso{% endblock %}
+{% block body %}
+    {{ form_start(form, { 'action': path('ProjectSiteBundle_user_create'), 'method': 'POST'}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.originalPassword) }}
+    {{ form_row(form.role) }}
+    {{ form_rest(form) }}
+<input type="submit" value="Создать" class="button"/>
+{% endblock %}

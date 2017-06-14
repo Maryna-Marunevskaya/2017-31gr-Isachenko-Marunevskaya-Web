@@ -1,0 +1,32 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %} {% block title %}Поездки - Moorooso{% endblock%}
+
+{% block body %}
+<div class="table_country">
+{% if is_granted('ROLE_TRAVELAGENT') %}
+<a href="{{path('ProjectSiteBundle_trip_create')}}" class="button">Добавить поездку</a>
+  <a href="{{path('ProjectSiteBundle_trip_delete_all_finished')}}" class="button">Удалить все закончившиеся поездки</a>{% endif %} {% if not trips is empty %}
+   <table>
+    <thead>
+        <tr>
+            <th>Название маршрута</th>
+            <th>Время поездки</th>
+            <th>Краткое описание поездки</th>
+            <th>Изображение поездки</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trip in trips %}
+        <tr>
+            <td>{{trip.route.name}}</td>
+            <td>{{trip.startDate|date("H:i d-m-y")}} - {{trip.finishDate|date("H:i d-m-y")}}</td>
+            <td>{{trip.shortdescription}}</td>
+            <td><img src="{{ asset(['images/trip/', trip.image]|join) }}" /></td>
+            <td><a href="/moorooso/trip/{{trip.id}}" class="button">Узнать больше</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+</div>
+{% endblock %}

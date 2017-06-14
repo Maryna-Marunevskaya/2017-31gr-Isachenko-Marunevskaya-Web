@@ -1,0 +1,15 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Создание поездки - Moorooso{% endblock %}
+{% block body %}
+    {{ form_start(form, { 'action': path('ProjectSiteBundle_trip_create'), 'method': 'POST'}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.route) }}
+    {{ form_row(form.startDate) }}
+    {{ form_row(form.finishDate) }}
+    {{ form_row(form.maxNumOfTourists) }}
+    {{ form_row(form.shortdescription) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.image) }}
+    {{ form_rest(form) }}
+<input type="submit" value="Создать" class="button"/>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}{{route.name}} - Moorooso{% endblock%}
+
+{% block body %}
+<div class="table_country">
+    <div class="image" align= "center">
+        <h2>{{route.name}}</h2>
+        {% if is_granted('ROLE_TRAVELAGENT')%}
+        <p><a href="/moorooso/travelagent/route/edit/{{route.id}}" class="button">Изменить</a><a href="/moorooso/travelagent/route/delete/{{route.id}}" class="button">Удалить</a></p>
+        {% endif %}
+        <img src="{{ asset(['images/route/', route.image]|join) }}" height="100"/>
+        <p>{{route.shortdescription}}</p>
+        <p>{{route.description}}</p>
+    </div>
+{% if not route.placesInRoute is empty %}
+   <h2>Пункты маршрута</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Название пункта маршрута</th>
+                <th>Краткое описание пункта маршрута</th>
+                <th>Изображение пункта маршрута</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for placeInRoute in route.placesInRoute %}
+                <tr>
+                    <td>{{placeInRoute.place.fullname}}</td>
+                    <td>{{placeInRoute.place.shortdescription}}</td>
+                    <td><img src="{{ asset(['images/',placeInRoute.place.discr,'/', placeInRoute.place.image]|join) }}" /></td>
+                    <td><a href="/moorooso/placeinroute/{{placeInRoute.id}}" class="button">Узнать больше</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endif %}
+</div>
+{% endblock%}

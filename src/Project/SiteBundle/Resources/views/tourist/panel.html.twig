@@ -1,0 +1,22 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %} {% block title %}Панель туриста - Moorooso{% endblock%}
+{% block body %}
+{% if not app.user.trips is empty %}
+       <table>
+           <thead>
+               <tr>
+				   <th>Поездка</th>
+                   <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trip in app.user.trips %}
+                <tr>
+                    <td>{{trip.trip.route.name}}, {{trip.trip.startDate|date("H:i d-m-y")}}-{{trip.trip.finishDate|date("H:i d-m-y")}}
+<a href="/moorooso/trip/{{trip.trip.id}}" class="button">Узнать больше</a></td>
+                    <td>{% if trip.trip.isCanLeave %}<a href="/moorooso/tourist/trip/leave/{{trip.trip.id}}" class="button">Покинуть поездку</a>{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

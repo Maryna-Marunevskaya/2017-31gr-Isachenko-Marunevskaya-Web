@@ -1,0 +1,33 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}{{trip.route.name}}, {{trip.startDate|date("H:i d-m-y")}} - {{trip.finishDate|date("H:i d-m-y")}} - Moorooso{% endblock%}
+
+{% block body %}
+<div class="table_country">
+    <div class="image" align= "center">
+        {% if is_granted('ROLE_TRAVELAGENT')%}
+        <p><a href="/moorooso/travelagent/trip/edit/{{trip.id}}" class="button">Изменить</a><a href="/moorooso/travelagent/trip/delete/{{trip.id}}" class="button">Удалить</a></p>
+        {% endif %}
+        <img src="{{ asset(['images/trip/', trip.image]|join) }}" height="100"/>
+        <p>{{trip.shortdescription}}</p>
+        <p>{{trip.description}}</p>
+        <p>Маршрут - {{trip.route.name}} <a href="/moorooso/trip/{{trip.id}}" class="button">Узнать больше</a></p>
+        <p>{{trip.startDate|date("H:i d-m-y")}} - {{trip.finishDate|date("H:i d-m-y")}}</p>
+        <p>Максимальное число туристов в поездке - {{trip.maxNumOfTourists}}</p>
+        <p>Число туристов в поездке - {{trip.touristsInTrip|length}}</p>
+        {% if is_granted('ROLE_TRAVELAGENT')%}
+        {% if not trip.touristsInTrip is empty %}
+        <h2>Туристы</h2>
+        {% for tourist in trip.touristsInTrip %}
+        <p>{{tourist.tourist.username}} {% if trip.isCanLeave %}<a href="/moorooso/travelagent/touristintrip/delete/{{tourist.id}}" class="button">Исключить из поездки</a>{% endif %}</p>
+        {% endfor %}
+        {% endif %}{% endif %}
+        {% if is_granted('ROLE_TOURIST') %}
+            {% if (app.user.inTrip(trip)) and (trip.isCanLeave) %}
+                <a href="/moorooso/tourist/trip/leave/{{trip.id}}" class="button">Покинуть поездку</a>
+                {% elseif (trip.maxNumOfTourists>trip.touristsInTrip|length) and (trip.isCanJoin)  %}
+                <a href="/moorooso/tourist/trip/join/{{trip.id}}" class="button">Присоединиться</a>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock%}

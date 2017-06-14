@@ -1,0 +1,13 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Редактирование страны - Moorooso{% endblock %}
+
+{% block body %}
+    {{ form_start(form, { 'action': path('ProjectSiteBundle_country_edit', { 'id' : country.id }), 'method': 'POST'}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.shortdescription) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.image) }}
+    {{ form_rest(form) }}
+    <input type="submit" value="Сохранить" class="button"/>
+{% endblock %}

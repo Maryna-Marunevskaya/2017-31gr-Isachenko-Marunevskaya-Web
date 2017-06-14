@@ -1,0 +1,26 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Контакты - Moorooso{% endblock %}
+
+{% block body %}
+   <div class="map">
+       <h4>Ищите нас тут</h4>
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d72881.6806095388!2d30.125325155238087!3d55.19109673556287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46c573e3fc7c7be7%3A0x430637d0624afff4!2z0JLQuNGC0LXQsdGB0LosINCR0LXQu9Cw0YDRg9GB0Yw!5e0!3m2!1sru!2sru!4v1495828214830" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+ </div>
+<div class="information">
+   <h4>Контакты</h4>
+    <h5>Время работы:</h5> пн-пт 9.00-18.00,сб, вс - выходной
+    <h5>Адрес</h5>ул. Чкалова, 150а
+    <h5>Телефон</h5>+375 33 321 25 54
+    <h5>Email</h5>moorooso@gmail.com
+    <h4>Свяжитесь с нами</h4>
+    {{ form_start(form, { 'action': path('ProjectSiteBundle_contacts'), 'method': 'POST'}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.fullname) }}
+    {{ form_row(form.phone) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.theme) }}
+    {{ form_row(form.content) }}
+    {{ form_rest(form) }}
+    <input type="submit" value="Отправить" class="button"/>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}{{placeInRoute.place.fullname}} - Moorooso{% endblock%}
+{% block body %}
+{% if is_granted('ROLE_TRAVELAGENT')%}
+<p>
+<a href="/moorooso/travelagent/placeinroute/edit/{{placeInRoute.id}}" class="button">Изменить</a>
+<a href="/moorooso/travelagent/placeinroute/delete/{{placeInRoute.id}}" class="button">Удалить</a> </p>
+{% endif %}
+<p>Место - {{placeInRoute.place.fullname}} <a href="/moorooso/{{placeInRoute.place.discr}}/{{placeInRoute.place.id}}" class="button">Узнать больше</a></p>
+<p>Маршрут - {{placeInRoute.route.name}} <a href="/moorooso/route/{{placeInRoute.route.id}}" class="button">Узнать больше</a>
+</p>
+{% endblock%}

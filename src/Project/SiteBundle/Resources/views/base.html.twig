@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset=utf-8"/>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{asset( 'css/foundation.css')}}">
+    <link rel="stylesheet" href="{{asset( 'css/main.css')}}">
+    {% block stylesheets %}{% endblock %}
+    <link rel="shortcut icon " href="{{ asset( 'favicon.png') }} " />
+</head>
+<body>
+   <div class="row">
+       <div class="twelve columns">
+           {% block navigation %}
+                <nav>
+		            <ul class="logo">Moorooso</ul>
+  		            <ul class="menu">
+  		                <li><a href="{{ path('ProjectSiteBundle_homepage') }}">Главная</a></li>
+  		                <li>
+  		                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+  		                <a href="#">Аккаунт</a>
+  		                <ul class="sub-menu">
+                              <li>{% if is_granted('ROLE_ADMINISTRATOR') %}
+	      			            <a href="{{ path('ProjectSiteBundle_administrator_personal') }}">
+	      			            {% elseif is_granted('ROLE_TRAVELAGENT')%}
+	      			            <a href="{{ path('ProjectSiteBundle_travelagent_personal') }}">
+	      			            {% else %}
+	      			            <a href="{{ path('ProjectSiteBundle_tourist_personal') }}">
+	      			            {% endif %}Личный кабинет</a></li>
+			      	            <li><a href="{{ path('_security_logout') }}">Выйти</a></li>
+                            </ul>
+  		                {% else %}
+  		                <a href="{{ path('_security_login') }}">Войти</a>
+  		                {% endif %}
+  		                </li>
+		                <li>
+                            <a href="#">Атлас</a>
+                            <ul class="sub-menu">
+	      			            <li><a href="{{ path('ProjectSiteBundle_all_countries') }}">Страны</a></li>
+			      	            <li><a href="{{ path('ProjectSiteBundle_all_cities') }}">Города</a></li>
+			      	            <li><a href="{{ path('ProjectSiteBundle_all_sights') }}">Достопримечательности</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ path('ProjectSiteBundle_all_routes') }}">Маршруты</a></li>
+		                <li><a href="{{ path('ProjectSiteBundle_all_trips') }}">Поездки</a></li>
+		                <li><a href="#">О нас</a></li>
+		                <li><a href="{{ path('ProjectSiteBundle_comments') }}">Отзывы</a></li>
+		                <li><a href="{{ path('ProjectSiteBundle_contacts') }}">Контакты</a></li>
+                    </ul>
+	            </nav>
+  	            <a id="touch-menu" class="mobile-menu" href="#"><i class="icon-reorder"></i>Меню</a>
+            {% endblock %}
+
+            {% block body %}{% endblock %}
+
+            {% block footer %}{% endblock %}
+        </div>
+    </div>
+    <div class="example2">
+    <div class="bg row expanded">
+        <img src="{{ asset('images/bg2.png') }}" class="example_beauty">
+
+        <span>
+          <h1>
+          <ul class="logo">Moorooso</ul>
+          </h1>
+          <h2>
+            <ul class="menu">
+            <li><a href="{{ path('ProjectSiteBundle_all_countries') }}">Страны</a></li>
+            <li><a href="{{ path('ProjectSiteBundle_all_cities') }}">Города</a></li>
+            <li><a href="{{ path('ProjectSiteBundle_all_sights') }}">Достопримечательности</a></li>
+            <li><a href="{{ path('ProjectSiteBundle_all_routes') }}">Маршруты</a></li>
+            <li><a href="{{ path('ProjectSiteBundle_all_trips') }}">Поездки</a></li>
+            <li><a href="#">О нас</a></li>
+            <li><a href="{{ path('ProjectSiteBundle_comments') }}">Отзывы</a></li>
+            <li><a href="{{ path('ProjectSiteBundle_contacts') }}">Контакты</a></li>
+            </ul>
+          </h2>
+      </span>
+      </div>
+</div>
+
+
+    {% block javascripts %}{% endblock %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js " type="text/javascript " ></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js "></script>
+    <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js "></script>
+    <script src={{ asset("js/index.js ") }}></script>
+    <script src={{ asset("js/jquery.js " )}}></script>
+    <script src={{ asset("js/what-input.js ") }}></script>
+    <script src={{ asset("js/foundation.js ") }}></script>
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+</html>

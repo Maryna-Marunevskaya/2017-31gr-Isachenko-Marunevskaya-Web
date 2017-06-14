@@ -1,0 +1,34 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Пункты маршрутов - Moorooso{% endblock%}
+
+{% block body %}
+ <div class="table_country">
+ {% if is_granted('ROLE_TRAVELAGENT')%}
+  <a href="/moorooso/travelagent/placeinroute/create" class="button">Добавить пункт маршрута</a>
+  {% endif %}
+   {% if not placesInRoute is empty %}
+       <table>
+           <thead>
+               <tr>
+                   <th>Название пункта маршрута</th>
+				   <th>Маршрут</th>
+                   <th>Краткое описание пункта маршрута</th>
+                   <th>Изображение пункта маршрута</th>
+                   <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for placeInRoute in placesInRoute %}
+                <tr>
+                    <td>{{placeInRoute.place.fullname}}</td>
+                    <td><a href="/moorooso/route/{{placeInRoute.route.id}}" class="button">{{placeInRoute.route.name}}</a></td>
+                    <td>{{placeInRoute.place.shortdescription}}</td>
+                    <td><img src="{{ asset(['images/',placeInRoute.place.discr,'/', placeInRoute.place.image]|join) }}" /></td>
+                    <td><a href="/moorooso/placeinroute/{{placeInRoute.id}}" class="button">Узнать больше</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

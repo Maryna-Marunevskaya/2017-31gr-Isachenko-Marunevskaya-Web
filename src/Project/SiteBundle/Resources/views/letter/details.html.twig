@@ -1,0 +1,12 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}{{letter.theme}}, {{letter.fullname}} - Moorooso{% endblock %}
+
+{% block body %}
+    {{letter.created|date("H:i d-m-y")}}
+    {{letter.fullname}}
+    {{letter.phone}}
+    {{letter.email}}
+    {{letter.theme}}
+    {{letter.content}}
+    <a href="/moorooso/administrator/letter/delete/{{letter.id}}">Удалить</a>
+{% endblock %}

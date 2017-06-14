@@ -1,0 +1,17 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}{{sight.fullname}} - Moorooso{% endblock %}
+
+{% block body %}
+   <div class="table_country">
+        <div class="image" align= "center">
+            <h2>{{sight.name}}</h2>
+            {% if is_granted('ROLE_ADMINISTRATOR') %}
+            <p><a href="/moorooso/administrator/sight/edit/{{sight.id}}" class="button">Изменить</a><a href="/moorooso/administrator/sight/delete/{{sight.id}}" class="button">Удалить</a></p>
+            {% endif %}
+            <p>Страна - {{sight.city.country.name}} <a href="/moorooso/country/{{sight.city.country.id}}" class="button">Узнать больше</a></p>
+            <p>Город - {{sight.city.name}} <a href="/moorooso/city/{{sight.city.id}}" class="button">Узнать больше</a></p>   <img src="{{ asset(['images/sight/', sight.image]|join) }}" height="100"/>
+            <p>{{sight.shortdescription}}</p>
+            <p>{{sight.description}}</p>
+       </div>
+</div>
+{% endblock %}

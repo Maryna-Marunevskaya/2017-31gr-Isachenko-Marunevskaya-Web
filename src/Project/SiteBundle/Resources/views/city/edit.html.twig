@@ -1,0 +1,14 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Редактирование города - Moorooso{% endblock %}
+
+{% block body %}
+    {{ form_start(form, { 'action': path('ProjectSiteBundle_city_edit', { 'id' : city.id }), 'method': 'POST'}) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.shortdescription) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.image) }}
+    {{ form_row(form.country) }}
+    {{ form_rest(form) }}
+    <input type="submit" value="Сохранить" class="button" />
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'ProjectSiteBundle::base.html.twig' %}
+{% block title %}Страны - Moorooso{% endblock%}
+
+{% block body %}
+ <div class="table_country">
+ {% if is_granted('ROLE_ADMINISTRATOR') %}
+  <a href="/moorooso/administrator/country/create" class="button">Добавить страну</a>
+  {% endif %}
+   {% if not countries is empty %}
+
+       <table>
+           <thead>
+               <tr>
+                   <th>Название страны</th>
+                   <th>Краткое описание страны</th>
+                   <th>Изображение страны</th>
+                   <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for country in countries %}
+                    <tr>
+                        <td>{{country.name}}</td>
+                        <td>{{country.shortdescription}}</td>
+                        <td><img src="{{ asset(['images/country/', country.image]|join) }}"/></td>
+                        <td><a href="/moorooso/country/{{country.id}}" class="button">Узнать больше</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    </div>
+{% endblock %}
