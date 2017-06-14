@@ -1,3 +1,0 @@
-blogger_blog:
-    resource: "@ProjectSiteBundle/Resources/config/routing.yml"
-    prefix:   /moorooso
